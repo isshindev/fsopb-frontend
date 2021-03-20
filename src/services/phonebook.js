@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001/persons"
+const baseUrl = process.env.REACT_APP_BASE_URL + "/api/people";
 
 function getAll() {
     return axios

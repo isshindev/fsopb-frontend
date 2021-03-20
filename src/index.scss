@@ -1,0 +1,23 @@
+
+.notification {
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 5px;
+    display: block;
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    padding: 10px;
+    max-width: 300px;
+    background: lightgrey;
+
+    &.error {
+        color: white;
+        background: red;
+    }
+
+    &.success {
+        color: white;
+        background: green;
+    }
+}
+

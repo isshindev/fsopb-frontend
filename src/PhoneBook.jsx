@@ -34,7 +34,7 @@ export default function PhoneBook() {
                 setNewNumber("");
                 showNotification("success", `Successfully created ${person.name}!`)
             })
-            .catch(error => showNotification("error", error.message));
+            .catch(error => showError(error));
     }
 
     function updatePerson(oldPerson) {
@@ -42,13 +42,16 @@ export default function PhoneBook() {
             ...oldPerson,
             number: newNumber,
         };
-        console.log(oldPersonWithNewNumber);
         phonebookService.update(oldPersonWithNewNumber)
             .then(person => {
                 setPeople(people.map(p => p.id === person.id ? person : p))
                 showNotification("success", `Successfully updated ${person.name}!`)
             })
-            .catch(error => showNotification("error", error.message));
+            .catch(error => showError(error));
+    }
+
+    function showError(error) {
+        showNotification("error", error.response ? error.response.data.error : error.message)
     }
 
     function showNotification(type, message) {
